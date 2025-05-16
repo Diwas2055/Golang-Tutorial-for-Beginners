@@ -701,3 +701,119 @@ func main() {
     fmt.Println(<-ch)
 }
 ```
+
+> Note : The `new()` vs `make()` Functions in Go 
+
+- The `new()` Function
+The `new()` function in Go is a built-in function that allocates memory for a new zeroed value of a specified type and returns a pointer to it. It is primarily used for initializing and obtaining a pointer to a newly allocated zeroed value of a given type, usually for data types like structs.
+
+```go
+package main
+
+import "fmt"
+
+type Person struct {
+    Name     string
+    Age      int
+    Gender     string
+}
+
+func main() {
+    // Using new() to allocate memory for a Person struct
+    p := new(Person)
+
+    // Initializing the fields
+    p.Name = "John Doe"
+    p.Age = 30
+    p.Gender = "Male"
+
+    fmt.Println(p)
+}
+```
+
+- The `make()` Function
+On the other hand, the make() function is used for initializing `slices`, `maps`, and `channels` – data structures that require `runtime` initialization. Unlike `new()`, make() returns an initialized (non-zeroed) value of a specified type.
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    // Using make() to create a slice with a specified length and capacity
+    s := make([]int, 10, 15)
+
+    // Initializing the elements
+    for i := 0; i < 10; i++ {
+        s[i] = i + 1
+    }
+
+    fmt.Println(s)
+}
+```
+
+- Use `new()` for Value Types 
+
+- Use `make()` for Reference Types
+
+## Go Select 
+
+The `select` statement in Go allows us to execute a channel among many alternatives.
+
+### Syntax of Select Statement
+
+```go
+select {
+
+  case firstChannel:
+
+  case secondChannel:
+
+  case thirdChannel:
+
+}
+```
+> Note: The syntax of `select` case looks similar to that of the `Switch Case` in Go. And, like the `switch` case, only one of the cases is executed by `select`.
+
+### Example: Golang `select` Statement 
+```go
+package main
+import "fmt"
+
+func main() {
+
+  // create two channels
+  number := make(chan int)
+  message := make(chan string)
+
+  // function call with goroutine
+  go channelNumber(number)
+  go channelMessage(message)
+  
+  // selects and executes a channel
+  select {
+
+    case firstChannel := <- number:
+      fmt.Println("Channel Data:", firstChannel)
+
+    case secondChannel := <- message:
+      fmt.Println("Channel Data:", secondChannel)
+}
+
+}
+
+// goroutine to send integer data to channel
+func channelNumber(number chan int) {
+  number <- 15
+}
+
+// goroutine to send string data to channel
+ func channelMessage(message chan string) {
+   message <- "Learning Go select"
+}
+
+
+// Output
+
+// Channel Data: Learning Go select
+```
