@@ -106,7 +106,21 @@ Run:
 go run chapters/08-structs.go
 ```
 
-## Chapter 09: Packages (chapters/packages/)
+## Chapter 09: Concurrency Primitives (chapters/09-concurrency.go)
+
+- Goroutines (go keyword)
+- WaitGroups (sync.WaitGroup)
+- Channels (chan)
+- Buffered channels
+- Closing channels
+
+Run:
+
+```bash
+go run chapters/09-concurrency.go
+```
+
+## Chapter 10: Packages (chapters/packages/)
 
 - Custom packages
 - Exported functions
@@ -121,12 +135,12 @@ go mod init booking-app
 go run main.go
 ```
 
-## Chapter 10: Concurrency (main.go)
+## Chapter 11: Capstone Application (main.go)
 
-- Goroutines (go)
-- WaitGroups (sync.WaitGroup)
-- Concurrent execution
-- defer
+- Integrated concurrency
+- Error handling
+- Input validation logic
+- Modular design
 
 Run:
 
@@ -138,10 +152,10 @@ go run main.go helper.go
 
 | Week   | Focus          |
 | :----- | :------------- |
-| Week 1 | Chapters 01-02 |
-| Week 2 | Chapters 03-05 |
-| Week 3 | Chapters 06-08 |
-| Week 4 | Chapters 09-10 |
+| Week 1 | Chapters 01-03 |
+| Week 2 | Chapters 04-06 |
+| Week 3 | Chapters 07-09 |
+| Week 4 | Chapters 10-11 |
 
 ## Test
 

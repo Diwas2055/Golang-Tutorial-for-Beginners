@@ -10,7 +10,7 @@ Go tutorial with code examples and a booking application.
 - Data Structures: Arrays, slices, maps, and structs
 - Control Flow: Loops, conditionals, and input validation
 - Functions: Parameters, return values, and packages
-- Concurrency: Goroutines and WaitGroups
+- Concurrency: Goroutines, Channels, and WaitGroups
 
 ## Project Structure
 
@@ -38,6 +38,7 @@ Go tutorial with code examples and a booking application.
     ├── 06-functions.go         # Functions
     ├── 07-maps.go              # Maps
     ├── 08-structs.go           # Structs
+    ├── 09-concurrency.go       # Concurrency Primitives
     └── packages/               # Package organization
 ```
 
@@ -66,12 +67,12 @@ go run main.go helper.go
 
 ## Plan
 
-| Week   | Focus            | Files                 |
-| :----- | :--------------- | :-------------------- |
-| Week 1 | Foundations      | `chapters/01` to `03` |
-| Week 2 | Control Flow     | `chapters/04` to `05` |
-| Week 3 | Data & Functions | `chapters/06` to `08` |
-| Week 4 | Concurrency      | `main.go`             |
+| Week   | Focus              | Files                           |
+| :----- | :----------------- | :------------------------------ |
+| Week 1 | Foundations        | `chapters/01` to `03`           |
+| Week 2 | Control Flow       | `chapters/04` to `06`           |
+| Week 3 | Data & Concurrency | `chapters/07` to `09`           |
+| Week 4 | Projects           | `chapters/packages/`, `main.go` |
 
 ## Test
 
