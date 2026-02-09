@@ -4,14 +4,14 @@ Go tutorial with code examples and a booking application.
 
 ## Content
 
-- Go Introduction: Go history and use cases
-- Setup: Installation and environment configuration
-- Fundamentals: Variables, constants, and data types
-- Operators: Arithmetic, comparison, and logical operators
-- Data Structures: Arrays, slices, maps, and structs
-- Control Flow: Loops, conditionals, and input validation
-- Functions: Parameters, return values, and packages
-- Concurrency: Goroutines, Channels, and WaitGroups
+- Go Introduction: History and use cases
+- Setup: Installation and configuration
+- Fundamentals: Variables and types
+- Operators: Math, Pointers, Symbols
+- Data Structures: Slices, maps, and structs
+- Control Flow: Loops and conditionals
+- Functions: Parameters and organization
+- Concurrency: Goroutines and Channels
 
 ## Project Structure
 
@@ -33,51 +33,44 @@ Go tutorial with code examples and a booking application.
 │
 └── chapters/                   # Code examples
     ├── 01-basic.go             # Hello World
-    ├── 01.5-operators.go       # Operators
-    ├── 02-variables.go         # Variables
-    ├── 03-arrays.go            # Slices
-    ├── 04-loops.go             # Iteration
-    ├── 05-if-else.go           # Conditionals
-    ├── 06-functions.go         # Functions
-    ├── 07-maps.go              # Maps
-    ├── 08-structs.go           # Structs
-    ├── 09-concurrency.go       # Concurrency Primitives
+    ├── 02-operators.go         # Operators & Symbols
+    ├── 03-variables.go         # Variables & Input
+    ├── 04-arrays.go            # Slices & Arrays
+    ├── 05-loops.go             # Iteration
+    ├── 06-if-else.go           # Conditionals
+    ├── 07-functions.go         # Functions
+    ├── 08-maps.go              # Maps
+    ├── 09-structs.go           # Structs
+    ├── 10-concurrency.go       # Concurrency Primitives
     └── packages/               # Package organization
 ```
 
 ## Setup
 
-### 1. Install Go
+1. Install Go: golang.org/dl
+2. Verify: `go version`
 
-- macOS: `brew install go`
-- Linux: `sudo apt install golang-go`
-- Windows: Download from golang.org/dl
-
-Verify: `go version`
-
-### 2. Run code
+## Run
 
 ```bash
+# Run a chapter
 go run chapters/01-basic.go
-```
 
-### 3. Booking App
-
-```bash
+# Run the app
 go mod init booking-app
 go run main.go helper.go
 ```
 
 ## Plan
 
-| Week   | Focus              | Files                           |
-| :----- | :----------------- | :------------------------------ |
-| Week 1 | Foundations        | `chapters/01` to `03`           |
-| Week 2 | Control Flow       | `chapters/04` to `06`           |
-| Week 3 | Data & Concurrency | `chapters/07` to `09`           |
-| Week 4 | Projects           | `chapters/packages/`, `main.go` |
+| Week   | Focus            | Files                    |
+| :----- | :--------------- | :----------------------- |
+| Week 1 | Foundations      | `chapters/01` to `03`    |
+| Week 2 | Logic            | `chapters/04` to `06`    |
+| Week 3 | Data & Functions | `chapters/07` to `09`    |
+| Week 4 | Concurrency      | `chapters/10`, `main.go` |
 
 ## Test
 
-- Verify documentation links in `README.md`.
-- Run `go run main.go` to ensure functionality.
+- Run all chapter files sequentially.
+- Verify operators in `02-operators.go`.

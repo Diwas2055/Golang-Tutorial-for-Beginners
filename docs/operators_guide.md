@@ -1,82 +1,52 @@
-# Operators Guide
+# Operators & Symbols Guide
 
-Go operators for arithmetic, comparison, logic, and memory access.
+Reference for Go operators, punctuation, and special symbols.
 
-## Arithmetic Operators
+## Arithmetic & Assignment
 
-Used for mathematical calculations.
+| Symbol              | Purpose          | Example                            |
+| :------------------ | :--------------- | :--------------------------------- |
+| `+` `-` `*` `/` `%` | Basic Math       | `a + b`, `10 % 3`                  |
+| `=`                 | Assignment       | `x = 5`                            |
+| `:=`                | Declare + Assign | `name := "Go"` (Short declaration) |
+| `+=` `-=` `*=` `/=` | Update + Assign  | `x += 2` (x = x + 2)               |
+| `++` `--`           | Inc/Dec          | `i++`, `i--` (Statements only)     |
 
-| Operator | Description    | Example       |
-| :------- | :------------- | :------------ |
-| `+`      | Addition       | `10 + 5 = 15` |
-| `-`      | Subtraction    | `10 - 5 = 5`  |
-| `*`      | Multiplication | `10 * 5 = 50` |
-| `/`      | Division       | `10 / 5 = 2`  |
-| `%`      | Modulus        | `10 % 3 = 1`  |
-| `++`     | Increment      | `i++`         |
-| `--`     | Decrement      | `i--`         |
+## Comparison & Logical
 
-## Comparison Operators
+| Symbol            | Purpose     | Example                   |
+| :---------------- | :---------- | :------------------------ |
+| `==`              | Equality    | `a == b` (Compare values) |
+| `!=`              | Inequality  | `a != b`                  |
+| `>` `<` `>=` `<=` | Relational  | `x > 10`, `y <= 5`        |
+| `&&`              | Logical AND | `cond1 && cond2`          |
+| `\|\|`            | Logical OR  | `cond1 \|\| cond2`        |
+| `!`               | Logical NOT | `!isValid`                |
 
-Used to compare two values. Returns a boolean (`true` or `false`).
+## Pointers & Memory
 
-| Operator | Description      | Example         |
-| :------- | :--------------- | :-------------- |
-| `==`     | Equal            | `5 == 5` (true) |
-| `!=`     | Not equal        | `5 != 3` (true) |
-| `>`      | Greater than     | `5 > 3` (true)  |
-| `<`      | Less than        | `3 < 5` (true)  |
-| `>=`     | Greater or equal | `5 >= 5` (true) |
-| `<=`     | Less or equal    | `3 <= 5` (true) |
+| Symbol | Purpose             | Example                              |
+| :----- | :------------------ | :----------------------------------- |
+| `&`    | Address-of          | `&x` (Get memory address of x)       |
+| `*`    | Pointer/Dereference | `*ptr` (Get value stored at address) |
 
-## Logical Operators
+## Structural & Special
 
-Used to combine multiple conditions.
-
-| Operator | Description | Example                  |
-| :------- | :---------- | :----------------------- |
-| `&&`     | Logical AND | `true && false` (false)  |
-| `\|\|`   | Logical OR  | `true \|\| false` (true) |
-| `!`      | Logical NOT | `!true` (false)          |
-
-## Assignment Operators
-
-Used to assign or declare variables.
-
-| Operator | Description         | Example                             |
-| :------- | :------------------ | :---------------------------------- |
-| `=`      | Assignment          | `x = 5`                             |
-| `:=`     | Short Declaration   | `name := "Go"` (Declare and assign) |
-| `+=`     | Add and assign      | `x += 3` (x = x + 3)                |
-| `-=`     | Subtract and assign | `x -= 2`                            |
-| `*=`     | Multiply and assign | `x *= 4`                            |
-| `/=`     | Divide and assign   | `x /= 2`                            |
-
-## Address and Pointer Operators
-
-Used for memory access and references.
-
-| Operator | Description         | Example                            |
-| :------- | :------------------ | :--------------------------------- |
-| `&`      | Address-of          | `&variable` (Gets memory address)  |
-| `*`      | Pointer/Dereference | `*pointer` (Gets value at address) |
-
-## Selector Operator
-
-Used to access members of a struct or package.
-
-| Operator | Description | Example                           |
-| :------- | :---------- | :-------------------------------- |
-| `.`      | Selector    | `user.firstName` or `fmt.Println` |
+| Symbol | Purpose         | Example                                   |
+| :----- | :-------------- | :---------------------------------------- |
+| `.`    | Access/Selector | `fmt.Println`, `user.name`                |
+| `_`    | Ignore          | `val, _ := fn()` (Discard return value)   |
+| `...`  | Variadic/Expand | `func fn(args ...int)`, `slice...`        |
+| `[]`   | Index/Slice     | `arr[0]`, `[]string{}` (Types & indexing) |
 
 ## Plan
 
-1. Apply arithmetic and assignment operators.
-2. Use comparison and logical operators in control flow.
-3. Access memory addresses using `&` and `*`.
-4. Access struct fields using the selector `.`.
+1. Use `:=` for internal function declarations.
+2. Apply `&` and `*` for memory manipulation.
+3. Utilize `_` to keep code clean by ignoring unused returns.
+4. Access struct fields or package functions using `.`.
 
 ## Test
 
-- Run `go run chapters/01.5-operators.go`.
-- Verify pointer values match variable values after dereferencing.
+- Run `go run chapters/02-operators.go`.
+- Check for "unused variable" errors to ensure `_` is used correctly.

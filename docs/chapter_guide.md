@@ -5,175 +5,87 @@ Instructions for Go tutorial chapters.
 ## Chapter 01: Hello World (chapters/01-basic.go)
 
 - Package declaration
-- Import statements
 - Main function
 - Printing to console
 
-Run:
+Run: `go run chapters/01-basic.go`
 
-```bash
-go run chapters/01-basic.go
-```
+## Chapter 02: Operators & Symbols (chapters/02-operators.go)
 
-## Chapter 01.5: Operators (chapters/01.5-operators.go)
+- Arithmetic (+, -, \*, /, %)
+- Pointers (&, \*)
+- Short declaration (:=)
+- Blank identifier (\_)
+- Variadic (...) and Slices ([])
+- Selectors (.) and Equality (==)
 
-- Arithmetic operators (+, -, \*, /, %)
-- Comparison operators (==, !=, <, >)
-- Logical operators (&&, ||, !)
-- Assignment and Short Declaration (=, :=, +=)
-- Pointer operators (&, \*)
-- Selector operator (.)
+Run: `go run chapters/02-operators.go`
 
-Run:
+## Chapter 03: Variables (chapters/03-variables.go)
 
-```bash
-go run chapters/01.5-operators.go
-```
+- var, const
+- Data types
+- User input (fmt.Scanln)
 
-## Chapter 02: Variables (chapters/02-variables.go)
+Run: `go run chapters/03-variables.go`
 
-- Variable declaration (var, :=)
-- Constants (const)
-- Data types (string, int, uint)
-- User input (fmt.Scan)
-- Formatted output (fmt.Printf)
+## Chapter 04: Arrays & Slices (chapters/04-arrays.go)
 
-Run:
-
-```bash
-go run chapters/02-variables.go
-```
-
-## Chapter 03: Arrays & Slices (chapters/03-arrays.go)
-
-- Arrays and slices
-- Slices (make, append)
+- make, append
 - Slice operations
 
-Run:
+Run: `go run chapters/04-arrays.go`
 
-```bash
-go run chapters/03-arrays.go
-```
+## Chapter 05: Loops (chapters/05-loops.go)
 
-## Chapter 04: Loops (chapters/04-loops.go)
+- for loop
+- range
 
-- For loop
-- Infinite loop
-- Range loop
-- String manipulation (strings.Fields)
+Run: `go run chapters/05-loops.go`
 
-Run:
-
-```bash
-go run chapters/04-loops.go
-```
-
-## Chapter 05: Conditionals (chapters/05-if-else.go)
+## Chapter 06: Conditionals (chapters/06-if-else.go)
 
 - if-else
-- Boolean operators (&&, ||, !)
-- Input validation
-- break and continue
+- break/continue
 - switch
 
-Run:
+Run: `go run chapters/06-if-else.go`
 
-```bash
-go run chapters/05-if-else.go
-```
+## Chapter 07: Functions (chapters/07-functions.go)
 
-## Chapter 06: Functions (chapters/06-functions.go)
+- Return values
+- Multiple returns
 
-- Function declaration
-- Parameters and return values
-- Multiple return values
-- Package-level variables
+Run: `go run chapters/07-functions.go`
 
-Run:
+## Chapter 08: Maps (chapters/08-maps.go)
 
-```bash
-go run chapters/06-functions.go
-```
+- Key-value storage
 
-## Chapter 07: Maps (chapters/07-maps.go)
+Run: `go run chapters/08-maps.go`
 
-- Map initialization (make)
-- Map elements
-- Type conversion (strconv)
+## Chapter 09: Structs (chapters/09-structs.go)
 
-Run:
+- Custom types
 
-```bash
-go run chapters/07-maps.go
-```
+Run: `go run chapters/09-structs.go`
 
-## Chapter 08: Structs (chapters/08-structs.go)
+## Chapter 10: Concurrency (chapters/10-concurrency.go)
 
-- Defining structs
-- Struct instances
-- Struct fields
-- Slices of structs
+- Goroutines
+- WaitGroups
+- Channels
 
-Run:
-
-```bash
-go run chapters/08-structs.go
-```
-
-## Chapter 09: Concurrency Primitives (chapters/09-concurrency.go)
-
-- Goroutines (go keyword)
-- WaitGroups (sync.WaitGroup)
-- Channels (chan)
-- Buffered channels
-- Closing channels
-
-Run:
-
-```bash
-go run chapters/09-concurrency.go
-```
-
-## Chapter 10: Packages (chapters/packages/)
-
-- Custom packages
-- Exported functions
-- Local packages
-- Module initialization (go mod init)
-
-Run:
-
-```bash
-cd chapters/packages
-go mod init booking-app
-go run main.go
-```
-
-## Chapter 11: Capstone Application (main.go)
-
-- Integrated concurrency
-- Error handling
-- Input validation logic
-- Modular design
-
-Run:
-
-```bash
-go run main.go helper.go
-```
+Run: `go run chapters/10-concurrency.go`
 
 ## Plan
 
-| Week   | Focus          |
-| :----- | :------------- |
-| Week 1 | Chapters 01-03 |
-| Week 2 | Chapters 04-06 |
-| Week 3 | Chapters 07-09 |
-| Week 4 | Chapters 10-11 |
+1. Foundations (01-03)
+2. Data Flow (04-06)
+3. Organization (07-09)
+4. Scale (10-11)
 
 ## Test
 
-- Run each chapter file.
-- Verify output matches expectations.
-- Run main.go and test user input.
+- Run all chapters sequentially.
+- Verify operators via `02-operators.go`.
