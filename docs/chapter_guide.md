@@ -20,7 +20,9 @@ go run chapters/01-basic.go
 - Arithmetic operators (+, -, \*, /, %)
 - Comparison operators (==, !=, <, >)
 - Logical operators (&&, ||, !)
-- Assignment operators (=, +=, -=)
+- Assignment and Short Declaration (=, :=, +=)
+- Pointer operators (&, \*)
+- Selector operator (.)
 
 Run:
 

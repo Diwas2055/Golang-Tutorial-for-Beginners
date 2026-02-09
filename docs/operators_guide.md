@@ -1,6 +1,6 @@
 # Operators Guide
 
-Go operators for arithmetic, comparison, and logic.
+Go operators for arithmetic, comparison, logic, and memory access.
 
 ## Arithmetic Operators
 
@@ -33,32 +33,50 @@ Used to compare two values. Returns a boolean (`true` or `false`).
 
 Used to combine multiple conditions.
 
-| Operator | Description | Example                 |
-| :------- | :---------- | :---------------------- | ---------- | ----- | --- | ------------- |
-| `&&`     | Logical AND | `true && false` (false) |
-| `        |             | `                       | Logical OR | `true |     | false` (true) |
-| `!`      | Logical NOT | `!true` (false)         |
+| Operator | Description | Example                  |
+| :------- | :---------- | :----------------------- |
+| `&&`     | Logical AND | `true && false` (false)  |
+| `\|\|`   | Logical OR  | `true \|\| false` (true) |
+| `!`      | Logical NOT | `!true` (false)          |
 
 ## Assignment Operators
 
-Used to assign values to variables.
+Used to assign or declare variables.
 
-| Operator | Description         | Example              |
-| :------- | :------------------ | :------------------- |
-| `=`      | Assign              | `x = 5`              |
-| `+=`     | Add and assign      | `x += 3` (x = x + 3) |
-| `-=`     | Subtract and assign | `x -= 2`             |
-| `*=`     | Multiply and assign | `x *= 4`             |
-| `/=`     | Divide and assign   | `x /= 2`             |
+| Operator | Description         | Example                             |
+| :------- | :------------------ | :---------------------------------- |
+| `=`      | Assignment          | `x = 5`                             |
+| `:=`     | Short Declaration   | `name := "Go"` (Declare and assign) |
+| `+=`     | Add and assign      | `x += 3` (x = x + 3)                |
+| `-=`     | Subtract and assign | `x -= 2`                            |
+| `*=`     | Multiply and assign | `x *= 4`                            |
+| `/=`     | Divide and assign   | `x /= 2`                            |
+
+## Address and Pointer Operators
+
+Used for memory access and references.
+
+| Operator | Description         | Example                            |
+| :------- | :------------------ | :--------------------------------- |
+| `&`      | Address-of          | `&variable` (Gets memory address)  |
+| `*`      | Pointer/Dereference | `*pointer` (Gets value at address) |
+
+## Selector Operator
+
+Used to access members of a struct or package.
+
+| Operator | Description | Example                           |
+| :------- | :---------- | :-------------------------------- |
+| `.`      | Selector    | `user.firstName` or `fmt.Println` |
 
 ## Plan
 
-1. Apply arithmetic operators in basic calculations.
-2. Use comparison operators in `if` statements.
-3. Combine conditions using logical operators.
-4. Verify results using `fmt.Println`.
+1. Apply arithmetic and assignment operators.
+2. Use comparison and logical operators in control flow.
+3. Access memory addresses using `&` and `*`.
+4. Access struct fields using the selector `.`.
 
 ## Test
 
-- Create a script using each operator type.
-- Verify boolean results for logical and comparison operations.
+- Run `go run chapters/01.5-operators.go`.
+- Verify pointer values match variable values after dereferencing.
