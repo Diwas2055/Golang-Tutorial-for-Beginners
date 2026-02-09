@@ -7,6 +7,7 @@ Go tutorial with code examples and a booking application.
 - Go Introduction: Go history and use cases
 - Setup: Installation and environment configuration
 - Fundamentals: Variables, constants, and data types
+- Operators: Arithmetic, comparison, and logical operators
 - Data Structures: Arrays, slices, maps, and structs
 - Control Flow: Loops, conditionals, and input validation
 - Functions: Parameters, return values, and packages
@@ -20,6 +21,7 @@ Go tutorial with code examples and a booking application.
 ├── docs/                       # Documentation guides
 │   ├── deep_dive_guide.md      # Technical guide
 │   ├── chapter_guide.md        # Sequential instructions
+│   ├── operators_guide.md      # Operators reference
 │   ├── cheatsheet.md           # Syntax reference
 │   ├── syntax_reference.md     # Language details
 │   ├── exercises_and_projects.md # Exercises
@@ -31,6 +33,7 @@ Go tutorial with code examples and a booking application.
 │
 └── chapters/                   # Code examples
     ├── 01-basic.go             # Hello World
+    ├── 01.5-operators.go       # Operators
     ├── 02-variables.go         # Variables
     ├── 03-arrays.go            # Slices
     ├── 04-loops.go             # Iteration

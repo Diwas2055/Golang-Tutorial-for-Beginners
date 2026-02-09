@@ -15,6 +15,19 @@ Run:
 go run chapters/01-basic.go
 ```
 
+## Chapter 01.5: Operators (chapters/01.5-operators.go)
+
+- Arithmetic operators (+, -, \*, /, %)
+- Comparison operators (==, !=, <, >)
+- Logical operators (&&, ||, !)
+- Assignment operators (=, +=, -=)
+
+Run:
+
+```bash
+go run chapters/01.5-operators.go
+```
+
 ## Chapter 02: Variables (chapters/02-variables.go)
 
 - Variable declaration (var, :=)
