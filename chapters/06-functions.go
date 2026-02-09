@@ -1,3 +1,6 @@
+// Chapter 06: Functions
+// This chapter introduces functions to organize code into reusable components.
+// It also demonstrates package-level variables and multiple return values.
 package main
 
 import (
@@ -5,6 +8,7 @@ import (
 	"strings"
 )
 
+// Package-level variables are accessible by all functions in this file.
 const conferenceTickets int = 50
 
 var remainingTickets uint = 50
@@ -12,43 +16,43 @@ var conferenceName = "Go Conference"
 var bookings = []string{}
 
 func main() {
-
+	// Call a simple function with no parameters.
 	greetUsers()
 
 	for {
-
+		// Functions can return multiple values.
 		firstName, lastName, email, userTickets := getUserInput()
+
+		// Passing parameters to a validation function.
 		isValidName, isValidEmail, isValidTicketNumber := validateUserInput(firstName, lastName, email, userTickets)
 
 		if isValidName && isValidEmail && isValidTicketNumber {
-
+			// Logical operation abstracted into a function.
 			bookTicket(userTickets, firstName, lastName, email)
 
-			firstNames := printFirstNames()
-			fmt.Printf("The first names %v\n", firstNames)
+			firstNames := getFirstNames()
+			fmt.Printf("The first names of bookings: %v\n", firstNames)
 
 			if remainingTickets == 0 {
-				// end program
+				fmt.Println("Conference booked out.")
 				break
 			}
 		} else {
-			if !isValidName {
-				fmt.Println("firt name or last name you entered is too short")
-			}
-			if !isValidEmail {
-				fmt.Println("email address you entered doesn't contain @ sign")
-			}
-			if !isValidTicketNumber {
-				fmt.Println("number of tickets you entered is invalid")
-			}
+			fmt.Println("Your input data is invalid. Please try again.")
 			continue
 		}
 	}
 }
 
-func printFirstNames() []string {
-	firstNames := []string{}
+// greetUsers prints a welcoming message using package-level variables.
+func greetUsers() {
+	fmt.Printf("Welcome to %v booking application.\n", conferenceName)
+	fmt.Printf("We have total of %v tickets and %v are still available.\n", conferenceTickets, remainingTickets)
+}
 
+// getFirstNames iterates over bookings and returns a list of names.
+func getFirstNames() []string {
+	firstNames := []string{}
 	for _, booking := range bookings {
 		var names = strings.Fields(booking)
 		firstNames = append(firstNames, names[0])
@@ -56,6 +60,7 @@ func printFirstNames() []string {
 	return firstNames
 }
 
+// getUserInput collects data from the terminal and returns 4 separate values.
 func getUserInput() (string, string, string, uint) {
 	var firstName string
 	var lastName string
@@ -77,6 +82,7 @@ func getUserInput() (string, string, string, uint) {
 	return firstName, lastName, email, userTickets
 }
 
+// validateUserInput returns three booleans indicating validity of input fields.
 func validateUserInput(firstName string, lastName string, email string, userTickets uint) (bool, bool, bool) {
 	isValidName := len(firstName) >= 2 && len(lastName) >= 2
 	isValidEmail := strings.Contains(email, "@")
@@ -84,14 +90,11 @@ func validateUserInput(firstName string, lastName string, email string, userTick
 	return isValidName, isValidEmail, isValidTicketNumber
 }
 
-func greetUsers() {
-	fmt.Printf("Welcome to %v booking application.\nWe have total of %v tickets and %v are still available.\nGet your tickets here to attend\n", conferenceName, conferenceTickets, remainingTickets)
-}
-
+// bookTicket updates state and prints confirmation.
 func bookTicket(userTickets uint, firstName string, lastName string, email string) {
 	remainingTickets = remainingTickets - userTickets
 	bookings = append(bookings, firstName+" "+lastName)
 
-	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
+	fmt.Printf("Thank you %v %v for booking %v tickets. Confirmation sent to %v\n", firstName, lastName, userTickets, email)
 	fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
 }

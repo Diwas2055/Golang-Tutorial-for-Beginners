@@ -1,7 +1,10 @@
+// Chapter 10: Packages
+// This file demonstrates how to use external packages and local modules.
+// It imports validation logic from the 'helper' package.
 package main
 
 import (
-	"booking-app/helper"
+	"booking-app/helper" // Importing a local package
 	"fmt"
 	"strings"
 )
@@ -13,43 +16,42 @@ var conferenceName = "Go Conference"
 var bookings = []string{}
 
 func main() {
-
 	greetUsers()
 
 	for {
-
 		firstName, lastName, email, userTickets := getUserInput()
+
+		// Using an exported function from the 'helper' package.
+		// Exported functions must start with a capital letter.
 		isValidName, isValidEmail, isValidTicketNumber := helper.ValidateUserInput(firstName, lastName, email, userTickets, remainingTickets)
 
 		if isValidName && isValidEmail && isValidTicketNumber {
-
 			bookTicket(userTickets, firstName, lastName, email)
 
-			firstNames := printFirstNames()
-			fmt.Printf("The first names %v\n", firstNames)
+			firstNames := getFirstNames()
+			fmt.Printf("The first names of bookings: %v\n", firstNames)
 
 			if remainingTickets == 0 {
-				// end program
+				fmt.Println("Conference booked out.")
 				break
 			}
 		} else {
 			if !isValidName {
-				fmt.Println("firt name or last name you entered is too short")
+				fmt.Println("First or last name is too short.")
 			}
 			if !isValidEmail {
-				fmt.Println("email address you entered doesn't contain @ sign")
+				fmt.Println("Email address is missing @ sign.")
 			}
 			if !isValidTicketNumber {
-				fmt.Println("number of tickets you entered is invalid")
+				fmt.Println("Number of tickets is invalid.")
 			}
 			continue
 		}
 	}
 }
 
-func printFirstNames() []string {
+func getFirstNames() []string {
 	firstNames := []string{}
-
 	for _, booking := range bookings {
 		var names = strings.Fields(booking)
 		firstNames = append(firstNames, names[0])
@@ -79,13 +81,14 @@ func getUserInput() (string, string, string, uint) {
 }
 
 func greetUsers() {
-	fmt.Printf("Welcome to %v booking application.\nWe have total of %v tickets and %v are still available.\nGet your tickets here to attend\n", conferenceName, conferenceTickets, remainingTickets)
+	fmt.Printf("Welcome to %v booking application.\n", conferenceName)
+	fmt.Printf("We have total of %v tickets and %v are still available.\n", conferenceTickets, remainingTickets)
 }
 
 func bookTicket(userTickets uint, firstName string, lastName string, email string) {
 	remainingTickets = remainingTickets - userTickets
 	bookings = append(bookings, firstName+" "+lastName)
 
-	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
+	fmt.Printf("Thank you %v %v for booking %v tickets.\n", firstName, lastName, userTickets)
 	fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
 }

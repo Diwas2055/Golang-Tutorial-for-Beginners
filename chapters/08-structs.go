@@ -1,3 +1,6 @@
+// Chapter 08: Structs
+// This chapter introduces Structs (Structures), which are custom types
+// that group different data types together under a single name.
 package main
 
 import (
@@ -9,8 +12,9 @@ const conferenceTickets int = 50
 
 var remainingTickets uint = 50
 var conferenceName = "Go Conference"
-var bookings = make([]User, 0)
 
+// We define a custom 'User' struct. This is much cleaner than using maps
+// because it allows mixed types (strings and uints) and fixed field names.
 type User struct {
 	firstName       string
 	lastName        string
@@ -18,65 +22,55 @@ type User struct {
 	numberOfTickets uint
 }
 
-func main() {
+var bookings = make([]User, 0)
 
+func main() {
 	greetUsers()
 
 	for {
-
 		firstName, lastName, email, userTickets := getUserInput()
 		isValidName, isValidEmail, isValidTicketNumber := validateUserInput(firstName, lastName, email, userTickets)
 
 		if isValidName && isValidEmail && isValidTicketNumber {
-
 			bookTicket(userTickets, firstName, lastName, email)
 
-			firstNames := printFirstNames()
-			fmt.Printf("The first names %v\n", firstNames)
+			firstNames := getFirstNames()
+			fmt.Printf("The first names of bookings: %v\n", firstNames)
 
 			if remainingTickets == 0 {
-				// end program
+				fmt.Println("Conference sold out.")
 				break
 			}
 		} else {
-			if !isValidName {
-				fmt.Println("firt name or last name you entered is too short")
-			}
-			if !isValidEmail {
-				fmt.Println("email address you entered doesn't contain @ sign")
-			}
-			if !isValidTicketNumber {
-				fmt.Println("number of tickets you entered is invalid")
-			}
+			fmt.Println("Invalid input data.")
 			continue
 		}
 	}
 }
 
-func printFirstNames() []string {
-	firstNames := []string{}
+func greetUsers() {
+	fmt.Printf("Welcome to %v booking application.\n", conferenceName)
+}
 
+func getFirstNames() []string {
+	firstNames := []string{}
 	for _, booking := range bookings {
+		// Accessing struct fields using the dot '.' operator.
 		firstNames = append(firstNames, booking.firstName)
 	}
 	return firstNames
 }
 
 func getUserInput() (string, string, string, uint) {
-	var firstName string
-	var lastName string
-	var email string
+	var firstName, lastName, email string
 	var userTickets uint
 
-	fmt.Println("Enter Your First Name: ")
+	fmt.Println("Enter First Name: ")
 	fmt.Scanln(&firstName)
-
-	fmt.Println("Enter Your Last Name: ")
+	fmt.Println("Enter Last Name: ")
 	fmt.Scanln(&lastName)
-
-	fmt.Println("Enter Your Email: ")
+	fmt.Println("Enter Email: ")
 	fmt.Scanln(&email)
-
 	fmt.Println("Enter number of tickets: ")
 	fmt.Scanln(&userTickets)
 
@@ -90,14 +84,10 @@ func validateUserInput(firstName string, lastName string, email string, userTick
 	return isValidName, isValidEmail, isValidTicketNumber
 }
 
-func greetUsers() {
-	fmt.Printf("Welcome to %v booking application.\nWe have total of %v tickets and %v are still available.\nGet your tickets here to attend\n", conferenceName, conferenceTickets, remainingTickets)
-}
-
 func bookTicket(userTickets uint, firstName string, lastName string, email string) {
 	remainingTickets = remainingTickets - userTickets
 
-	// create user map
+	// Creating an instance of the 'User' struct.
 	var user = User{
 		firstName:       firstName,
 		lastName:        lastName,
@@ -107,6 +97,6 @@ func bookTicket(userTickets uint, firstName string, lastName string, email strin
 
 	bookings = append(bookings, user)
 
-	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
+	fmt.Printf("Thank you %v %v for booking %v tickets.\n", firstName, lastName, userTickets)
 	fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
 }

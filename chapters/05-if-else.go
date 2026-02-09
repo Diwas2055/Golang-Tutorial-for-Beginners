@@ -1,3 +1,6 @@
+// Chapter 05: Conditionals
+// This chapter teaches how to use if-else statements to validate user input
+// and control the program flow based on conditions.
 package main
 
 import (
@@ -6,13 +9,12 @@ import (
 )
 
 func main() {
-
 	const conferenceTickets int = 50
 	var remainingTickets uint = 50
 	conferenceName := "Go Conference"
 	bookings := []string{}
 
-	fmt.Printf("Welcome to %v booking application.\nWe have total of %v tickets and %v are still available.\nGet your tickets here to attend\n", conferenceName, conferenceTickets, remainingTickets)
+	fmt.Printf("Welcome to %v booking application.\n", conferenceName)
 
 	for {
 		var firstName string
@@ -20,7 +22,6 @@ func main() {
 		var email string
 		var userTickets uint
 
-		// asking for user input
 		fmt.Println("Enter Your First Name: ")
 		fmt.Scanln(&firstName)
 
@@ -33,61 +34,38 @@ func main() {
 		fmt.Println("Enter number of tickets: ")
 		fmt.Scanln(&userTickets)
 
-		// validate user input
+		// Input Validation Logic
+		// We check for name length, email format, and ticket availability.
 		isValidName := len(firstName) >= 2 && len(lastName) >= 2
 		isValidEmail := strings.Contains(email, "@")
 		isValidTicketNumber := userTickets > 0 && userTickets <= remainingTickets
 
 		if isValidName && isValidEmail && isValidTicketNumber {
-
-			// book ticket in system
 			remainingTickets = remainingTickets - userTickets
 			bookings = append(bookings, firstName+" "+lastName)
 
-			fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
+			fmt.Printf("Thank you %v %v for booking %v tickets. Confirmation sent to %v\n", firstName, lastName, userTickets, email)
 			fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
 
-			// print only first names
-			firstNames := []string{}
-			for _, booking := range bookings {
-				var names = strings.Fields(booking)
-				firstNames = append(firstNames, names[0])
-			}
-			fmt.Printf("The first names %v\n", firstNames)
-
-			// exit application if no tickets are left
+			// Logic to check if the conference is sold out.
 			if remainingTickets == 0 {
-				// end program
 				fmt.Println("Our conference is booked out. Come back next year.")
+				// 'break' terminates the loop.
 				break
 			}
 		} else {
+			// Inform the user exactly what went wrong.
 			if !isValidName {
-				fmt.Println("firt name or last name you entered is too short")
+				fmt.Println("First name or last name you entered is too short.")
 			}
 			if !isValidEmail {
-				fmt.Println("email address you entered doesn't contain @ sign")
+				fmt.Println("Email address you entered doesn't contain @ sign.")
 			}
 			if !isValidTicketNumber {
-				fmt.Println("number of tickets you entered is invalid")
+				fmt.Println("Number of tickets you entered is invalid.")
 			}
+			// 'continue' skips the rest of the current loop iteration.
 			continue
 		}
-	}
-
-	// Switch statement example
-	city := "London"
-
-	switch city {
-	case "New York":
-		// booking for New York conference
-	case "Singapore", "Hong Kong":
-		// booking for Singapore & Hong Kong conference
-	case "London", "Berlin":
-		// booking for London & Berlin conference
-	case "Mexico City":
-		// booking for Mexico City conference
-	default:
-		fmt.Print("No valid city selected")
 	}
 }
